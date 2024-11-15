@@ -1,35 +1,35 @@
-'use client'; // Ensures this component is treated as a client-side component
 
-import { useState } from 'react';
+// components/FAQ.js
+'use client'
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 export default function FAQ() {
-  // Declare a state variable to track which FAQ is open
-  const [faqOpen, setFaqOpen] = useState(null);
-
-  // FAQ data
-  const faqs = [
-    { question: "How does the app analyze food?", answer: "The app uses advanced image recognition and machine learning to provide insights on the food you upload or capture." },
-    { question: "Can I use the app offline?", answer: "Yes, the app offers an offline mode where you can access previously analyzed data without an internet connection." },
-    { question: "Is the calorie estimate accurate?", answer: "While estimates are generally accurate, they are based on visual cues and may vary slightly from lab-tested values." },
-    { question: "How is my data handled?", answer: "We value your privacy and ensure all data is processed securely in compliance with privacy regulations." }
-  ];
+  const faqItems = [
+    { question: 'How accurate is the food analysis?', answer: 'Our app uses cutting-edge AI and a comprehensive food database to provide highly accurate nutritional information. While results may vary slightly based on factors like food preparation methods, we consistently achieve over 95% accuracy in our analyses.' },
+    { question: 'Is my data kept private?', answer: 'Absolutely. Your privacy is our top priority. All personal data is encrypted using industry-standard protocols and stored securely. We never share your information with third parties without your explicit consent, and you have full control over your data at all times.' },
+    { question: 'Can I use the app offline?', answer: 'While most features require an internet connection for real-time analysis, you can access your saved meal data and some basic functionalities offline. We\'re constantly working on expanding our offline capabilities to enhance your experience.' },
+    { question: 'How often is the food database updated?', answer: 'Our food database is continuously updated to ensure the most accurate and up-to-date nutritional information. We add new foods and refine existing entries on a weekly basis, incorporating the latest research and user feedback to maintain the highest standards of accuracy.' },
+  ]
 
   return (
-    <section id="faq" className="container mx-auto px-6 py-16">
-      <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
-      <div className="space-y-4">
-        {faqs.map((faq, index) => (
-          <div key={index} className="p-4 border border-gray-200 rounded-lg shadow-md">
-            <button
-              onClick={() => setFaqOpen(faqOpen === index ? null : index)} // Toggle visibility
-              className="flex justify-between w-full text-left"
-            >
-              <span className="font-semibold">{faq.question}</span>
-            </button>
-            <p className={`mt-2 text-gray-600 ${faqOpen === index ? 'block' : 'hidden'}`}>{faq.answer}</p>
-          </div>
+    <section id="faq" className="container mx-auto px-6 py-20">
+      <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">
+        Frequently Asked Questions
+      </h2>
+      <Accordion type="single" collapsible className="max-w-3xl mx-auto">
+        {faqItems.map((item, index) => (
+          <AccordionItem key={index} value={`item-${index}`} className="border-b border-purple-200">
+            <AccordionTrigger className="text-lg text-gray-700 hover:text-purple-600">{item.question}</AccordionTrigger>
+            <AccordionContent className="text-gray-600">{item.answer}</AccordionContent>
+          </AccordionItem>
         ))}
-      </div>
+      </Accordion>
     </section>
-  );
+  )
 }

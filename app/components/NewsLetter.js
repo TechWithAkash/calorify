@@ -1,23 +1,27 @@
-'use client';
+// components/Newsletter.js
+'use client'
+
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 export default function Newsletter() {
   return (
-    <section className="container mx-auto px-6 py-16 text-center bg-primary text-white rounded-lg">
-      <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-      <p className="mb-8">Subscribe to our newsletter for the latest updates and health tips.</p>
-      <form className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-        <input
-          type="email"
-          placeholder="Enter your email"
-          className="px-4 py-2 w-full sm:w-auto border border-transparent rounded-lg focus:outline-none text-gray-900"
+    <section id="newsletter" className="container mx-auto px-6 py-20 text-center">
+      <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-800">Stay Ahead in Health</h2>
+      <p className="text-xl text-gray-600 mb-10">Join our community for exclusive health tips and app updates.</p>
+      <form className="max-w-md mx-auto flex gap-4">
+        <Input 
+          type="email" 
+          placeholder="Enter your email" 
+          className="flex-grow border-2 border-purple-300 focus:border-purple-500 rounded-full py-3 px-6" 
         />
-        <button
-          type="submit"
-          className="px-6 py-2 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-700"
+        <Button 
+          type="submit" 
+          className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition duration-300 hover:scale-105"
         >
           Subscribe
-        </button>
+        </Button>
       </form>
     </section>
-  );
+  )
 }

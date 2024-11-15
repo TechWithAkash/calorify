@@ -1,66 +1,49 @@
-// import Image from "next/image";
+// app/page.js
+'use client'
 
-// export default function Home() {
-//   return (
-//     <div className="text-5xl flex justify-center items-center p-10 font-bold">
-//       Welcome to calorify 
-//     </div>
-//   );
-// }
-// "use server"
-'use client';
+import { useState, useEffect } from 'react'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import Features from './components/Features'
+import FAQ from './components/FAQ'
+import Testimonials from './components/Testimonials'
+import Newsletter from './components/NewsLetter'
+import Footer from './components/Footer'
 
-import { useState, useEffect } from 'react';
-import HeroSection from './components/HeroSection';
-import FAQ from './components/FAQ';
-// import Newsletter from '../components/Newsletter';
-import Features from './components/Features';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Testimonials from './components/Testimonials';
-import Newsletter from './components/NewsLetter';
-
-export default function Home() {
-  const [activeSection, setActiveSection] = useState('home');
-
-  const scrollTo = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+export default function HomePage() {
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'features', 'faq', 'testimonials'];
-      const currentSection = sections.find((section) => {
-        const element = document.getElementById(section);
-        return element && element.getBoundingClientRect().top <= 100;
-      });
-      setActiveSection(currentSection || 'home');
-    };
+      const sections = ['home', 'features', 'faq', 'testimonials']
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          return rect.top <= 100 && rect.bottom >= 100
+        }
+        return false
+      })
+      if (currentSection) {
+        setActiveSection(currentSection)
+      }
+    }
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <>
-
-  
-      <Header activeSection={activeSection} scrollTo={scrollTo} />
-      <HeroSection scrollTo={scrollTo} />
-      <Features/>
-      <FAQ />
-      <Testimonials/>
-      <Newsletter/>
-      
-      
-     <Footer/>
-     
-    </>
-  );
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-pink-50 to-orange-50 text-gray-900">
+      <Navbar activeSection={activeSection} />
+      <main>
+        <Hero />
+        <Features />
+        <FAQ />
+        <Testimonials />
+        <Newsletter />
+      </main>
+      <Footer />
+    </div>
+  )
 }
