@@ -51,9 +51,9 @@ export default function Navbar({ activeSection }) {
             {!session ? (
               <Button
                 variant="ghost"
-                size="sm"
+                
                 onClick={() => signIn('google')}
-                className="text-purple-600 hover:text-pink-600"
+                className="text-white bg-pink-500 rounded-lg px-4 py-5 text-xl hover:bg-purple-500"
               >
                 Login
               </Button>
@@ -136,11 +136,10 @@ export default function Navbar({ activeSection }) {
               {!session ? (
                 <Button
                   variant="ghost"
-                  size="sm"
                   onClick={() => signIn('google')}
-                  className="text-purple-600 hover:text-pink-600"
+                  className="text-purple-600 p-6 text-[30px]  hover:text-pink-600"
                 >
-                  Login
+                  <span className='text-xl'>Login</span>
                 </Button>
               ) : (
                 <div className="flex flex-col items-center py-4 space-y-2">
