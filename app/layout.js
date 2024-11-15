@@ -31,6 +31,7 @@
 import "./globals.css";
 import { Outfit } from 'next/font/google';
 import SessionWrapper from "./components/sesssionwrapper";
+import Navbar from "./components/Navbar";
 
 export const metadata = {
   title: "Create Next App",
@@ -46,6 +47,7 @@ export default function RootLayout({ children }) {
       <body
       className={outfit.className}
       >
+        <Navbar/>
         {children}
       </body>
       </SessionWrapper>

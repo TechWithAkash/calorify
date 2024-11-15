@@ -2,6 +2,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function Testimonials() {
   const testimonials = [
@@ -26,7 +27,7 @@ export default function Testimonials() {
               className="bg-white rounded-2xl shadow-xl p-8 transform transition duration-300 hover:scale-105 hover:shadow-2xl"
             >
               <div className="flex items-center mb-6">
-                <img src={testimonial.avatar} alt={testimonial.name} className="w-16 h-16 rounded-full mr-4 border-4 border-purple-300" />
+                <Image src={"/hero2.jpg"} height={800} width={800} alt={testimonial.name} className="w-16 h-16 rounded-full mr-4 border-4 border-purple-300" />
                 <h3 className="font-bold text-lg text-gray-800">{testimonial.name}</h3>
               </div>
               <p className="text-gray-600 italic">&ldquo;{testimonial.comment}&rdquo;</p>

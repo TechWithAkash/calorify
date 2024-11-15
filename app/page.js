@@ -35,7 +35,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 via-pink-50 to-orange-50 text-gray-900">
-      <Navbar activeSection={activeSection} />
+      {/* <Navbar activeSection={activeSection} /> */}
       <main>
         <Hero />
         <Features />

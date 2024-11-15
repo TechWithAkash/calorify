@@ -6,6 +6,7 @@ import { X, Menu as MenuIcon } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function Navbar({ activeSection }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -32,9 +33,9 @@ export default function Navbar({ activeSection }) {
     <header className="sticky top-0 z-50 bg-white bg-opacity-70 backdrop-blur-lg">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <a href="#" className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+          <Link href={"/"} className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
             Calorify
-          </a>
+          </Link>
           <div className="hidden md:flex space-x-8">
             {['Home', 'Features', 'FAQ', 'About', 'Contact'].map((item) => (
               <button
